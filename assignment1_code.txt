@@ -1,0 +1,117 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+int bs(int arr[],int low,int high,int s);
+int ls(int arr[],int low,int high,int s);
+int menu();
+
+int main()
+{
+    return menu();
+}
+
+
+int menu()
+{
+    char m;
+    printf("BINARY SEARCH AND LINEAR SEARCH : ");
+    printf("click 1 : enter array \nclick 2 : binary search\nclick 3 : linear search\nclick 4  : exit\nenter your operation : ");
+    scanf("%c",&m);
+    switch(m)
+    {
+        case '1':
+        //taking input --->
+        int *arr;
+        int n,i,ch,s,low,high;
+        printf("enter the number of elements for array :");
+        scanf("%d",&n);
+        //dynamically allocating memory using malloc()
+        arr=(int*)malloc(n*sizeof(int));
+        //check if the memory has been allocated using malloc
+        if(arr==NULL)
+        {
+            printf("memory not allocated.\n");
+            return 0;
+        }
+        else
+        {
+            //get the elements of array
+            printf("enter the elements of array\n");
+            for(i=0;i<n;i++)
+            {
+                scanf("%d",&arr[i]);
+            }
+        }
+        printf("enter the element to be searched\n");
+        scanf("%d",&s);
+        low=0;
+        high=n;
+        return menu();
+        break;
+        
+        case '2':
+        return bs(arr,low,high,s);
+        break;
+        
+        case '3':
+        return ls(arr,low,high,s);
+        break;
+        
+        case '4':
+        printf("EXIT!!\n");
+        break;
+        
+        default:
+        return menu();
+    }
+}
+
+
+int bs(int arr[],int low,int high,int s)
+{
+    
+        high=high-1;
+        if(low>high)
+        {
+            printf("element absent\n");
+            Sleep(5000);
+            return menu();
+        }
+        mid=(low+high)/2;
+        if(s==arr[mid])
+        {
+            printf("element present at position: %d\n");
+            Sleep(5000);
+            return menu();
+        }
+        if(s<arr[mid])
+        bs(arr[],low,mid+1,s)
+        if(s>arr[mid])
+        bs(arr[],mid+1,high,s)
+            
+}
+
+int ls(int arr[],int low,int high,int s)
+{
+    
+        high=high-1;
+        int i,k=0;
+        for(i=low;i<high;i++)
+        {
+            if(s==arr[i])
+            {
+            printf("element present at position: %d\n");
+            k=1;
+            getch();
+            return menu();
+            }
+        }
+        if(k==0)
+        {
+            printf("element absent\n");
+            getch();
+            return menu();  
+        }
+            
+}

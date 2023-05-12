@@ -1,0 +1,71 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <limits.h>
+
+#define MAX_CITIES 10
+
+int numCities;
+int distance[MAX_CITIES][MAX_CITIES];
+int visited[MAX_CITIES];
+int optimalRoute[MAX_CITIES + 1];
+int optimalDistance = INT_MAX;
+
+void tsp(int currentCity, int visitedCount, int currentDistance, int route[]) {
+    visited[currentCity] = 1;
+    route[visitedCount] = currentCity;
+
+    if (visitedCount == numCities - 1) {
+        // Visited all cities, return to starting city
+        currentDistance += distance[currentCity][0];
+
+        if (currentDistance < optimalDistance) {
+            // Update optimal route and distance
+            for (int i = 0; i < numCities; i++) {
+                optimalRoute[i] = route[i];
+            }
+            optimalRoute[numCities] = 0; // Return to starting city
+            optimalDistance = currentDistance;
+        }
+    } else {
+        for (int nextCity = 0; nextCity < numCities; nextCity++) {
+            if (!visited[nextCity]) {
+                int newDistance = currentDistance + distance[currentCity][nextCity];
+                if (newDistance < optimalDistance) {
+                    tsp(nextCity, visitedCount + 1, newDistance, route);
+                }
+            }
+        }
+    }
+
+    visited[currentCity] = 0;
+}
+
+int main() {
+    printf("Enter the number of cities: ");
+    scanf("%d", &numCities);
+
+    printf("Enter the distance matrix:\n");
+    for (int i = 0; i < numCities; i++) {
+        for (int j = 0; j < numCities; j++) {
+            scanf("%d", &distance[i][j]);
+        }
+    }
+
+    int route[MAX_CITIES];
+    tsp(0, 0, 0, route);
+
+    printf("Optimal Route: ");
+    for (int i = 0; i <= numCities; i++) {
+        printf("%d ", optimalRoute[i]);
+    }
+    printf("\nOptimal Distance: %d\n", optimalDistance);
+
+    return 0;
+}
+
+
+
+
+
+
+

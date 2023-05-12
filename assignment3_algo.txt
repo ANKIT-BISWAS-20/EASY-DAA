@@ -1,0 +1,27 @@
+KNAPSACK :
+
+
+1. Consider all the items with their weights and profits mentioned respectively.
+
+2. Calculate Pi/Wi of all the items and sort the items in descending order based on their Pi/Wi values.
+
+3. Without exceeding the limit, add the items into the knapsack.
+
+4. If the knapsack can still store some weight, but the weights of other items exceed the limit, the fractional part of the next time can be added.
+
+5. Hence, giving it the name fractional knapsack problem.
+
+
+
+
+
+JOB SEQUENCING :
+
+
+1. Find the maximum deadline value from the input set of jobs.
+
+2. Once, the deadline is decided, arrange the jobs in descending order of their profits.
+
+3. Selects the jobs with highest profits, their time periods not exceeding the maximum deadline.
+
+4. The selected set of jobs are the output.
