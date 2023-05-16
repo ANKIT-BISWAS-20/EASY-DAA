@@ -1,1 +1,26 @@
-will be available soon !!
+Place (k, i) returns a Boolean value that is true if the kth queen can be placed in column i. It tests
+both whether i is distinct from all previous costs x1, x2,....xk-1 and whether there is no other queen
+on the same diagonal. Using place, we give a precise solution to then n- queens problem.
+1. Place (k, i)
+2. {
+3. For j ← 1 to k - 1
+4. do if (x [j] = i)
+5. or (Abs x [j]) - i) = (Abs (j - k))
+6. then return false;
+7. return true;
+8. }
+9. Place (k, i) return true if a queen can be placed in the kth row and ith column otherwise return is
+false. x [] is a global array whose final k - 1 values have been set. Abs (r) returns the absolute value
+of r.
+1. N - Queens (k, n)
+2. {
+3. For i ← 1 to n
+4. do if Place (k, i) then
+5. {
+6. x [k] ← i;
+7. if (k ==n) then
+8. write (x [1... n));
+9. else
+10. N - Queens (k + 1, n);
+11. }
+12. }
