@@ -1,1 +1,29 @@
-will be available soon !!
+PRIM'S ALGORITHM :
+
+1. Choose any vertex of the graph to be the starting vertex and add it to the set of visited vertices.
+2. Create a set of edges called the minimum spanning tree (MST) that initially contains no edges.
+3. For each edge incident to the starting vertex, add it to a priority queue, where the priority is the weight
+of the edge.
+4. Repeat the following steps until all vertices have been visited: a. Pop the edge with the lowest weight
+from the priority queue. If the edge connects a visited vertex to an unvisited vertex, add it to the MST
+and mark the unvisited vertex as visited. b. For each edge incident to the newly visited vertex, add it
+to the priority queue if it connects to an unvisited vertex.
+5. The MST is the set of edges in the minimum spanning tree.
+
+
+
+KRUSKAL'S ALGORITHM :
+
+1. We start with an empty set of edges because we need to add edges one by one to form the MST. We
+also need to keep track of all the vertices because we'll need to check if adding an edge creates a
+cycle.
+2. We sort all the edges in non-decreasing order of their weights because we want to start with the edges
+that have the smallest weights. This is important because Kruskal's algorithm greedily selects the
+edges with the smallest weights that don't create a cycle.
+3. We iterate through each edge in the sorted list. For each edge, we need to check if adding it to the
+MST would create a cycle. We can do this by checking if the two endpoints of the edge are already in
+the same connected component of the MST. We can use a Union-Find data structure to efficiently
+keep track of the connected components. If the endpoints are not in the same connected component,
+we add the edge to the MST. Otherwise, we discard the edge.
+4. We repeat step 3 until there are no more edges left or the MST contains all the vertices. Once we have
+added enough edges to the MST to include all the vertices, we're done.
