@@ -1,1 +1,7 @@
-will be available soon !!
+1. If N is odd, then puzzle instance is solvable if number of inversions is even in the input state.
+2. If N is even, puzzle instance is solvable if
+• the blank is on an even row counting from the bottom (second-last, fourth-last, etc.) and number of
+inversions is odd.
+• the blank is on an odd row counting from the bottom (last, third-last, fifth-last, etc.) and number of
+inversions is even.
+3. For all other cases, the puzzle instance is not solvable.
